@@ -1,12 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const Job = require('../models/Job');
+const Job = require('../model/Job');
 
 // Test route — confirms Job model + DB work together
 router.get('/test', async (req, res) => {
   try {
     const count = await Job.countDocuments();
-    res.json({ message: 'Job routes working', jobCount: count });
+    res.json({ 
+      message: 'Job routes working',
+       jobCount: count });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
